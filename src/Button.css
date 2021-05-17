@@ -1,0 +1,7 @@
+.Button {
+  background-color: hotpink;
+}
+
+.Button--active {
+  background-color: steelblue;
+}
