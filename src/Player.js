@@ -2,18 +2,19 @@ import './Player.css'
 import PropTypes from 'prop-types'
 
 Player.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.number,
-  onClick: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number,
+  onMinus: PropTypes.func.isRequired,
+  onPlus: PropTypes.func.isRequired,
 }
 
-export default function Player({ name, number, onClick }) {
+export default function Player({ name, score, onMinus, onPlus }) {
   return (
     <section className="Player">
       {name}
-      <button onClick={onClick}>&#8592;</button>
-      {number}
-      <button onClick={onClick}>&#8594;</button>
+      <button onClick={onMinus}>&minus;</button>
+      {score}
+      <button onClick={onPlus}>&#43;</button>
     </section>
   )
 }
