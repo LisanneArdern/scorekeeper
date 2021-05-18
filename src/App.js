@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Button from './Button'
 import Player from './Player'
 import PlayerForm from './PlayerForm'
+import './App.css'
 
 function App() {
   const [players, setPlayers] = useState([
@@ -10,18 +11,22 @@ function App() {
   ])
   return (
     <div className="App">
-      {players.map((player, index) => (
-        <Player
-          key={player.name}
-          onMinus={() => handleMinus(index)}
-          onPlus={() => handlePlus(index)}
-          name={player.name}
-          score={player.score}
-        />
-      ))}
+      <div className="App__player-container">
+        {players.map((player, index) => (
+          <Player
+            key={player.name}
+            onMinus={() => handleMinus(index)}
+            onPlus={() => handlePlus(index)}
+            name={player.name}
+            score={player.score}
+          />
+        ))}
+      </div>
       <Button onClick={resetScores}>Reset scores</Button>
       <Button onClick={resetAll}>Reset All</Button>
-      <PlayerForm onSubmit={createPlayer} />
+      <div className="App__player-form-container">
+        <PlayerForm onSubmit={createPlayer} />
+      </div>
     </div>
   )
 
