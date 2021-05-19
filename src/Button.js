@@ -1,19 +1,18 @@
-import './Button.css'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-Button.propTypes = {
-  isActive: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.node,
-}
+const Button = styled.button`
+  padding: 0.35em 1.2em;
+  border: 0.1em solid black;
+  margin: 0 0.3em 0.3em 0;
+  display: inline-block;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: black;
+  text-align: center;
+  background-color: ${props => (props.isActive ? '#ccc' : 'white')};
+`
 
-export default function Button({ children, onClick, isActive }) {
-  return (
-    <button
-      onClick={onClick}
-      className={isActive ? 'Button Button--active' : 'Button'}
-    >
-      {children}
-    </button>
-  )
-}
+export default Button
