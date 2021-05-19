@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Button from './Button'
-import Player from './Player'
-import PlayerForm from './PlayerForm'
+import Button from './Button/Button'
+import Player from './Player/Player'
+import PlayerForm from './PlayerForm/PlayerForm'
 import styled from 'styled-components'
 
 function App() {
