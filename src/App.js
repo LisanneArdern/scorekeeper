@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from './Button'
 import Player from './Player'
 import PlayerForm from './PlayerForm'
-import './App.css'
+import styled from 'styled-components'
 
 function App() {
   const [players, setPlayers] = useState([
@@ -10,8 +10,8 @@ function App() {
     { name: 'John Doe', score: 50 },
   ])
   return (
-    <div className="App">
-      <div className="App__player-container">
+    <AppWrapper>
+      <div>
         {players.map((player, index) => (
           <Player
             key={player.name}
@@ -22,12 +22,14 @@ function App() {
           />
         ))}
       </div>
-      <Button onClick={resetScores}>Reset scores</Button>
+      <Button isActive onClick={resetScores}>
+        Reset scores
+      </Button>
       <Button onClick={resetAll}>Reset All</Button>
-      <div className="App__player-form-container">
+      <div>
         <PlayerForm onSubmit={createPlayer} />
       </div>
-    </div>
+    </AppWrapper>
   )
 
   function handleMinus(index) {
@@ -60,5 +62,12 @@ function App() {
     setPlayers([...players, { name, score: 0 }])
   }
 }
+
+const AppWrapper = styled.div`
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+`
 
 export default App
