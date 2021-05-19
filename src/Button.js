@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-const Button = styled.button`
+const ButtonStyled = styled.button`
   padding: 0.35em 1.2em;
   border: 0.1em solid black;
   margin: 0 0.3em 0.3em 0;
@@ -14,5 +15,15 @@ const Button = styled.button`
   text-align: center;
   background-color: ${props => (props.isActive ? '#ccc' : 'white')};
 `
+
+Button.propTypes = {
+  isActive: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.node,
+}
+
+function Button(props) {
+  return <ButtonStyled {...props} />
+}
 
 export default Button

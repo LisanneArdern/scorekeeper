@@ -23,15 +23,16 @@ describe('Button', () => {
   it('changes with the prop isActive', () => {
     const { rerender } = render(<Button onClick={jest.fn()}>Click me</Button>)
 
-    const button = screen.getByRole('button', { name: 'Click me' })
+    const button = screen.getByRole('button')
 
-    expect(button).toMatchSnapshot()
+    const defaultStyle = getComputedStyle(button)
 
     rerender(
       <Button isActive onClick={jest.fn()}>
         Click me
       </Button>
     )
-    expect(button).toMatchSnapshot()
+    const activeStyle = getComputedStyle(button)
+    expect(activeStyle).not.toBe(defaultStyle)
   })
 })
