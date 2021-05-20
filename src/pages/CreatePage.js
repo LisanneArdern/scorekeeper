@@ -52,8 +52,20 @@ export default function CreatePage({ onSubmit, onNavigate }) {
 }
 
 const Grid = styled.section`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  height: 100vh;
 `
 const Form = styled.form`
   display: grid;
+  gap: 12px;
+  label {
+    display: grid;
+    gap: 4px;
+  }
+  input {
+    padding: 4px;
+  }
 `
