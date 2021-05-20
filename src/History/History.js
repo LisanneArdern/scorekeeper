@@ -1,15 +1,21 @@
 import styled from 'styled-components'
-import Title from '../Title/Title'
 
-export default function History({ name }) {
+export default function History({ name, score }) {
   return (
     <HistoryWrapper>
-      <Title />
-      <div>{name}</div>
+      <h2>Title</h2>
+      <Scoreoverview>
+        <div>{name}</div>
+        <div>{score}</div>
+      </Scoreoverview>
     </HistoryWrapper>
   )
 }
 
 const HistoryWrapper = styled.section`
-  background-color: hotpink;
+  display: grid;
+`
+const Scoreoverview = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `
