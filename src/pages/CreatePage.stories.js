@@ -9,4 +9,10 @@ export default {
 const Template = args => <CreatePage {...args} />
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  namoeOfGame: 'Carcasonne',
+  players: [
+    { name: 'John', score: 0 },
+    { name: 'Jane', score: 30 },
+  ],
+}
