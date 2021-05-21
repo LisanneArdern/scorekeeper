@@ -11,6 +11,7 @@ GamePage.prototype = {
   ),
   onResetScores: PropTypes.func.isRequired,
   onEndGame: PropTypes.func.isRequired,
+  onPlayerUpdate: PropTypes.func.isRequired,
 }
 
 export default function GamePage({
@@ -28,8 +29,8 @@ export default function GamePage({
           key={name}
           name={name}
           score={score}
-          onMinus={onPlayerUpdate(index, -1)}
-          onPlus={onPlayerUpdate(index, 1)}
+          onMinus={() => onPlayerUpdate(index, -1)}
+          onPlus={() => onPlayerUpdate(index, 1)}
         />
       ))}
       <Button onClick={onResetScores}>Reset scores</Button>
@@ -40,5 +41,6 @@ export default function GamePage({
 
 const Grid = styled.section`
   display: grid;
+  align-content: start;
   gap: 20px;
 `

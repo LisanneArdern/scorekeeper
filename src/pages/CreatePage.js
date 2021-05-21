@@ -1,7 +1,6 @@
 import { PropTypes } from 'prop-types'
 import styled from 'styled-components'
 import Button from '../components/Button/Button'
-import Navigation from '../components/Navigation/Navigation'
 
 CreatePage.prototype = {
   onSubmit: PropTypes.func.isRequired,
@@ -22,14 +21,6 @@ export default function CreatePage({ onSubmit, onNavigate }) {
         </label>
         <Button>Create game</Button>
       </Form>
-      <Navigation
-        currentPageId="create"
-        onNavigate={onNavigate}
-        pages={[
-          { title: 'Create', id: 'create' },
-          { title: 'History', id: 'History' },
-        ]}
-      />
     </Grid>
   )
   function handleSubmit(event) {

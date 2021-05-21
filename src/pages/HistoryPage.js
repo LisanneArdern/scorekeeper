@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HistoryEntry from '../components/HistoryEntry/HistoryEntry'
-import Navigation from '../components/Navigation/Navigation'
 
 HistoryPage.propTypes = {
   games: PropTypes.arrayOf(
@@ -23,19 +22,13 @@ export default function HistoryPage({ games, onNavigate }) {
           players={game.players}
         />
       ))}
-
-      <Navigation
-        currentPageId="history"
-        onNavigate={onNavigate}
-        pages={[
-          { title: 'Create', id: 'create' },
-          { title: 'History', id: 'History' },
-        ]}
-      />
     </Grid>
   )
 }
 
 const Grid = styled.section`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-space-between;
+  gap: 20px;
 `
