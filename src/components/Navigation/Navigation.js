@@ -18,7 +18,7 @@ export default function Navigation({ onNavigate, pages, currentPageId }) {
           isActive={currentPageId === id}
           onClick={() => onNavigate(id)}
         >
-          {title}
+          {title.slice(0, 1).toUpperCase() + title.slice(1)}
         </NavButton>
       ))}
     </Nav>
