@@ -1,6 +1,7 @@
 import { PropTypes } from 'prop-types'
 import styled from 'styled-components'
 import Button from '../components/Button/Button'
+import { useHistory } from 'react-router-dom'
 
 CreatePage.prototype = {
   onSubmit: PropTypes.func.isRequired,
@@ -8,6 +9,7 @@ CreatePage.prototype = {
 }
 
 export default function CreatePage({ onSubmit, onNavigate }) {
+  let path = useHistory()
   return (
     <Grid>
       <Form onSubmit={handleSubmit}>
@@ -37,7 +39,7 @@ export default function CreatePage({ onSubmit, onNavigate }) {
       nameOfGame,
       players,
     }
-
+    path.push('/game')
     onSubmit(game)
   }
 }
@@ -47,7 +49,6 @@ const Grid = styled.section`
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-  height: 100vh;
 `
 const Form = styled.form`
   display: grid;
