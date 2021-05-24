@@ -28,9 +28,7 @@ export default function Navigation({ onNavigate, pages, currentPageId }) {
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
-  gap: 12px;
   width: 100%;
-  padding: 16px;
 `
 
 const NavButton = styled(Button)`

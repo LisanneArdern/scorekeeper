@@ -47,7 +47,6 @@ const Grid = styled.section`
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
-  height: 100vh;
 `
 const Form = styled.form`
   display: grid;

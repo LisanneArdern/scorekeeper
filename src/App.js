@@ -71,6 +71,5 @@ const AppGrid = styled.div`
   padding: 16px;
   display: grid;
   grid-template-rows: auto min-content;
-  gap: 20px;
   height: 100vh;
 `
