@@ -19,10 +19,9 @@ export default function GamePage({
   nameOfGame,
   players,
   onResetScores,
-  handleEndGame,
+  onEndGame,
   onPlayerUpdate,
 }) {
-  let path = useHistory()
   return (
     <Grid>
       <Header>{nameOfGame}</Header>
@@ -39,11 +38,6 @@ export default function GamePage({
       <Button onClick={onEndGame}>End game</Button>
     </Grid>
   )
-
-  function onEndGame(event) {
-    handleEndGame(event)
-    path.push('/history')
-  }
 }
 
 const Grid = styled.section`

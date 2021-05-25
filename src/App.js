@@ -4,65 +4,55 @@ import Navigation from './components/Navigation/Navigation'
 import CreatePage from './pages/CreatePage'
 import GamePage from './pages/GamePage'
 import HistoryPage from './pages/HistoryPage'
-import { Redirect, Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 export default function App() {
-  const [currentPageId, setCurrentPageId] = useState('create')
   const [history, setHistory] = useState([])
   const [players, setPlayers] = useState([])
   const [nameOfGame, setNameOfGame] = useState('')
 
-  const navButtons = ['create', 'history']
+  const { push } = useHistory()
 
   return (
     <AppGrid>
       <Switch>
         <Route exact path="/">
-          <Redirect to={`/${currentPageId}`} />
+          <CreatePage onSubmit={handleSubmit} />
         </Route>
-        <Route path="/create">
-          <CreatePage onNavigate={setCurrentPageId} onSubmit={handleSubmit} />
-        </Route>
-
-        <Route path="/game">
+        <Route exact path="/game">
           <GamePage
             onResetScores={resetScores}
-            handleEndGame={handleEndGame}
+            onEndGame={handleEndGame}
             onPlayerUpdate={updateScore}
             nameOfGame={nameOfGame}
             players={players}
           />
         </Route>
-        <Route path="/history">
-          <HistoryPage games={history} onNavigate={setCurrentPageId} />
+        <Route exact path="/history">
+          <HistoryPage games={history} />
         </Route>
       </Switch>
-
-      {currentPageId !== 'game' && (
-        <NavWraper>
-          {navButtons.map(button => (
-            <Link to={'/' + button}>
-              <Navigation
-                currentPageId={currentPageId}
-                onNavigate={setCurrentPageId}
-                pages={[{ title: button, id: button }]}
-              />
-            </Link>
-          ))}
-        </NavWraper>
-      )}
+      <Route path={['/', '/history']}>
+        <Navigation
+          pages={[
+            { name: 'create', path: '/' },
+            { name: 'history', path: '/history' },
+          ]}
+        />
+      </Route>
     </AppGrid>
   )
 
   function handleEndGame() {
-    setCurrentPageId('history')
     setHistory([{ players, nameOfGame }, ...history])
+    push('/history')
   }
 
   function handleSubmit({ players, nameOfGame }) {
     setPlayers(players)
     setNameOfGame(nameOfGame)
-    setCurrentPageId('game')
+    push('/game')
   }
 
   function resetScores() {

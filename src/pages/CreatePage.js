@@ -1,15 +1,12 @@
 import { PropTypes } from 'prop-types'
 import styled from 'styled-components'
 import Button from '../components/Button/Button'
-import { useHistory } from 'react-router-dom'
 
 CreatePage.prototype = {
   onSubmit: PropTypes.func.isRequired,
-  onNavigate: PropTypes.func.isRequired,
 }
 
-export default function CreatePage({ onSubmit, onNavigate }) {
-  let path = useHistory()
+export default function CreatePage({ onSubmit }) {
   return (
     <Grid>
       <Form onSubmit={handleSubmit}>
@@ -39,7 +36,6 @@ export default function CreatePage({ onSubmit, onNavigate }) {
       nameOfGame,
       players,
     }
-    path.push('/game')
     onSubmit(game)
   }
 }
