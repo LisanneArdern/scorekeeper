@@ -36,8 +36,12 @@ export default function App() {
       <Route path={['/', '/history']}>
         <Navigation
           pages={[
-            { name: 'create', path: '/' },
-            { name: 'history', path: '/history' },
+            { title: 'Create', id: '/' },
+            {
+              title: 'History',
+              id: 'history',
+              disabled: !history.length,
+            },
           ]}
         />
       </Route>

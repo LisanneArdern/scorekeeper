@@ -10,20 +10,30 @@ const ButtonStyled = styled.button`
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   color: black;
   text-align: center;
   background-color: ${props => (props.isActive ? '#ccc' : 'white')};
+  &.active {
+    background: #ccc;
+  }
+  & [disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 `
 
 Button.propTypes = {
   isActive: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node,
+  component: PropTypes.any,
+  disabled: PropTypes.bool,
 }
 
-function Button(props) {
-  return <ButtonStyled {...props} />
+export default function Button({
+  component: Component = 'button',
+  ...otherProps
+}) {
+  return <ButtonStyled as={Component} {...otherProps} />
 }
-
-export default Button

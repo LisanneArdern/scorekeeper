@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Header from '../components/Header/Header'
 import Player from '../components/Player/Player'
 import Button from '../components/Button/Button'
-import { useHistory } from 'react-router-dom'
 
 GamePage.prototype = {
   nameOfGame: PropTypes.string,
